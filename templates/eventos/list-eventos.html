@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda - Eventos</title>
+</head>
+<body style="display: grid; place-items: center; margin-top: 100px;">
+  <table>
+    <thead>
+        <tr>
+            <th style="border: 1px solid black; padding: 5px 8px;">Nombre</th>
+            <th style="border: 1px solid black; padding: 5px 8px;">Fecha</th>
+            <th style="border: 1px solid black; padding: 5px 8px;">Type</th>
+            <th style="border: 1px solid black; padding: 5px 8px;">Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for evento in eventos %}
+        <tr>
+            <td style="border: 1px solid black; padding: 5px 8px;">{{ evento.name }}</td>
+            <td style="border: 1px solid black; padding: 5px 8px;">{{ evento.date }}</td>
+            <td style="border: 1px solid black; padding: 5px 8px;">{{ evento.type }}</td>
+            <td style="border: 1px solid black; padding: 5px 8px;">{{ evento.description }}</td>
+            <td>
+                <a href="{% url 'update_eventos' evento.id %}" style="border: 1px solid black; padding: 5px 8px; text-decoration: none; background: #CDFEAA;">Editar</a>
+                <a href="{% url 'delete_eventos' evento.id %}" style="border: 1px solid black; padding: 5px 8px; text-decoration: none; background: #CDFEAA;">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'create_evento' %}" style="text-decoration: none; background: #CDFEAA;">Crear nuevo evento</a>
+</body>
+</html>
